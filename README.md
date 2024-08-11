@@ -41,41 +41,41 @@ This repository demonstrates the implementation of One Tap Google Sign-In using 
 
 3. Usage
 
-Replace `YOUR CLIENT ID` with the client ID you copied from Google Cloud:
-```kotlin
-val state = rememberOneTapSignInState()
-var user: GoogleUser? by remember { mutableStateOf(null) }
-
-OneTapSignInWithGoogle(
-    state = state,
-    clientId = "YOUR CLIENT ID", // Replace with your client ID
-    rememberAccount = false,
-    onTokenIdReceived = {
-        user = getUserFromTokenId(tokenId = it)
-        Log.d("MainActivity", user.toString())
-    },
-    onDialogDismissed = {
-        Log.d("MainActivity", it)
-    }
-)
-
-Box(
-    modifier = Modifier.fillMaxSize(),
-    contentAlignment = Alignment.Center
-) {
-    Button(onClick = { state.open() }) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            if (state.opened) {
-                CircularProgressIndicator(
-                    color = Color.White
-                )
-            }
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Sign in")
-        }
-    }
-}
-```
+   Replace `YOUR CLIENT ID` with the client ID you copied from Google Cloud:
+   ```kotlin
+   val state = rememberOneTapSignInState()
+   var user: GoogleUser? by remember { mutableStateOf(null) }
+   
+   OneTapSignInWithGoogle(
+       state = state,
+       clientId = "YOUR CLIENT ID", // Replace with your client ID
+       rememberAccount = false,
+       onTokenIdReceived = {
+           user = getUserFromTokenId(tokenId = it)
+           Log.d("MainActivity", user.toString())
+       },
+       onDialogDismissed = {
+           Log.d("MainActivity", it)
+       }
+   )
+   
+   Box(
+       modifier = Modifier.fillMaxSize(),
+       contentAlignment = Alignment.Center
+   ) {
+       Button(onClick = { state.open() }) {
+           Row(verticalAlignment = Alignment.CenterVertically) {
+               if (state.opened) {
+                   CircularProgressIndicator(
+                       color = Color.White
+                   )
+               }
+               Spacer(modifier = Modifier.width(8.dp))
+               Text(text = "Sign in")
+           }
+       }
+   }
+   ```
 
 ### Running the Project
 
